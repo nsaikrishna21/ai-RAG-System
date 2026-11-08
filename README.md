@@ -46,3 +46,40 @@ The environment variables for the vector store and search are defined in the.env
 
 * `python build_index.py` to build the index
 * `python search.py` to search for vectors
+
+## Qdrant DB - Storing + Retriving the data 
+
+The Qdrant DB is a vector database that is used to store and search vectors. It is a service that persists to disk, filters by metadata, and answers many queries at once.
+
+### Qdrant Demo
+
+The Qdrant demo is a script that demonstrates how to use the Qdrant DB. It creates a collection, adds vectors and metadata to it, and searches for vectors using a query vector.
+
+### Qdrant Store
+
+The Qdrant store is a class that stores vectors and metadata in Qdrant and searches by cosine similarity. It uses the Qdrant client to create a collection, add points to it, and search for points using a query vector.
+
+## Running the App with Uvicorn
+
+To run the app with Uvicorn, use the following command:
+
+```bash
+uvicorn app.main:app --port 8000
+```
+
+This will start the Uvicorn server and make the app available at `http://localhost:8000`.
+
+You can use the semantic search functionality of the app by sending a GET request to `http://localhost:8000/search` with a query parameter. For example:
+
+```javascript
+http://localhost:8000/search?query=How+will+the+city+pay+for+the+new+sports+venue?
+```
+
+This will return a list of search results, including the relevance score and the text of the matching chunks.
+
+## Commands
+
+- `python build_index.py` to build the index
+- `python search.py` to search for vectors
+- `uvicorn app.main:app --port 8000` to start the app
+- `docker compose up -d qdrant` to start the Qdrant DB
